@@ -1,0 +1,41 @@
+<main>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this obj from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+
+<%= render 'books/userinfo', book: @newbook, user: @user %>
+
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+    <table class="table">
+      <thead>
+
+
+        <tr>
+          <td>
+            <%= link_to user_path(@user.id) do %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "/assets/image/no_image.jpg" %>
+            <% end %><br />
+            <%= link_to @user.name, user_path(@book.user_id) %>
+          </tb>
+
+          <td><%= link_to @book.title, book_path(@book) %></td>
+          <td><%= @book.body %></td>
+
+
+          <% if current_user.id == @user.id %>
+            <td><%= link_to 'Edit' , edit_book_path(@book.id), class:"btn-sm btn-success" %></td>
+            <td><%= link_to "Destroy",book_path(@book), class:"btn-sm btn-danger", method: :delete,data: { confirm: '本当に消しますか?' } %></td>
+          <% end %>
+
+        </tr>
+      </thead>
+</table>
+
+</div>
+</main>
