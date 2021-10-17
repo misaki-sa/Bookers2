@@ -19,7 +19,7 @@
         <% @users.each do |user| %>
         <div><tr>
 
-          <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "/assets/image/no_image.jpg" %></td>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "images/no_image.jpg" %></td>
           <td><%= user.name %></td>
 
           <td><%= link_to "Show", user %></td>
